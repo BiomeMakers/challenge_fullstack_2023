@@ -17,4 +17,7 @@ class Sample extends Model
         return $this->hasMany(Abundance::class);
     }
 
+    public function crop(){
+        return $this->belongsTo(Crop::class);
+    }
 }

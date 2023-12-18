@@ -13,4 +13,8 @@ use Illuminate\Database\Eloquent\Model;
 class Organism extends Model
 {
     use HasFactory;
+
+    public function abundances() {
+        return $this->hasMany(Abundance::class);
+    }
 }

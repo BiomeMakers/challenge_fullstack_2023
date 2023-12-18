@@ -57,6 +57,12 @@ export default class NewOrganismVue extends Vue {
 
     async onClick(){
 
+        // Validate the fields, check they aren't empty
+        if (!this.genus || !this.species) {
+            this.msg = 'Both the fields Genus and Species cannot be empty.';
+            return;
+        }
+        
         const data = {
             genus: this.genus,
             species: this.species,
