@@ -14,8 +14,6 @@ use Illuminate\Validation\ValidationException;
  */
 class BiomeController extends Controller
 {
-
-
     /**
      * Returns a list of samples
      */
@@ -31,7 +29,6 @@ class BiomeController extends Controller
      * Creates a new organism
      */
     public function newOrganism(Request $request){
-
         // Log is configured to print to stderr
         Log::info($request->all());
 
@@ -44,10 +41,6 @@ class BiomeController extends Controller
         } catch (ValidationException $e) {
             return response()->json(['error' => 'Both the Genus and Species fields are required.'], 400);
         }
-
-        //
-        // TODO: Complete this method to create a new Organism instance
-        //
 
         // Create new instance of Organism and store it
         $organism = new Organism();
@@ -69,12 +62,6 @@ class BiomeController extends Controller
      * Returns the top list of organisms
      */
     public function listOrganismsTop10(){
-
-        //
-        // TODO: Return the top 10 organisms
-        //
-        // Could be done with plain sql or better using laravel models
-
         // Gets amount of Abundances related to Organism which is also the amount of Samples
         // it is related to
         return Organism::query()
@@ -82,6 +69,5 @@ class BiomeController extends Controller
             ->orderByDesc('sample_count')
             ->limit(10)
             ->get();
-        
     }
 }
